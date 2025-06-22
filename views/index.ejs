@@ -1,13 +1,15 @@
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="/output.css">
 
 </head>
 <body class="bg-black">
-    <header class="flex justify-center items-center">
-            <img src="assets/logo.png" width="300px" alt="logo">
+    <header class="flex justify-center items-center mt-3 mb-10">
+   <img src="assets/logo.png" class="w-[300px] sm:w-[500px]" alt="logo">
     </header>
 <main class="text-white flex items-center flex-col">
-<div class="displayJokes text-3xl font-light bg-gray-900 p-5 w-1/2 h-48 rounded-3xl">
+<div class="displayJokes text-xl sm:text-3xl font-light bg-gray-900 p-5 w-[95%] sm:w-1/2 h-64 rounded-3xl">
     <div class="flex justify-center  flex-col gap-2">
         <% if(locals.joke) {%>
             <div><%= joke %></div>
@@ -20,16 +22,16 @@
 <div class="btn">
     <button class="bg-blue-600 hover:bg-blue-800 font-semibold w-xs p-4 rounded-xl mt-10" onclick="window.location.href='/generate'">Tell me another joke</button>
 </div>
-<div class="category w-1/2  h-52 rounded-2xl mt-7  flex items-center justify-center flex-col">
+<div class="category w-1/2 rounded-2xl mt-7  flex items-center justify-center flex-col">
     <h3 class="text-2xl font-semibold text-gray-300">Choose category:</h3>
-    <div class="btn mt-5 flex gap-5">
+    <div class="btn mt-5 flex justify-center flex-row gap-5 flex-wrap  w-[95vw] sm:w-5xl">
         <button class="bg-gray-700 hover:text-black hover:bg-gray-400 font-semibold p-4 rounded-lg" onclick="window.location.href='/generate?category=Any'">Any</button>
         <button class="bg-gray-700 hover:text-black hover:bg-gray-400 font-semibold p-4 rounded-lg" onclick="window.location.href='/generate?category=Programming'">Programming</button>
         <button class="bg-gray-700 hover:text-black hover:bg-gray-400 font-semibold p-4 rounded-lg" onclick="window.location.href='/generate?category=Dark'">Dark</button>
         <button class="bg-gray-700 hover:text-black hover:bg-gray-400 font-semibold p-4 rounded-lg" onclick="window.location.href='/generate?category=Spooky'">Spooky</button>
         <button class="bg-gray-700 hover:text-black hover:bg-gray-400 font-semibold p-4 rounded-lg" onclick="window.location.href='/generate?category=Misc'">Misc</button>
         <button class="bg-gray-700 hover:text-black hover:bg-gray-400 font-semibold p-4 rounded-lg" onclick="window.location.href='/generate?category=Pun'">Pun</button>
-        <button class="bg-gray-700 hover:text-black hover:bg-gray-400 font-semibold p-4 rounded-lg" onclick="window.location.href='/generate?category=Chrismas'">Chrismas</button>
+        <button class="bg-gray-700 hover:text-black hover:bg-gray-400 font-semibold p-4 rounded-lg" onclick="window.location.href='/generate?category=Christmas'">Chrismas</button>
     </div>
 </div>
 </main>
