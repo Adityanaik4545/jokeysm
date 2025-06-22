@@ -2,7 +2,6 @@ const express = require('express')
 // used axios module to send req to external api
 const axios = require('axios')
 const app = express()
-const port = 3000
 app.set("view engine", "ejs")
 app.use(express.static("public"))
 // route for home page
@@ -33,6 +32,7 @@ app.get('/generate', async (req, res) => {
   }
 })
 // starts the server
-app.listen(port, () => {
-  console.log(` listening on port ${port}`)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(` listening on port ${PORT}`)
 })
