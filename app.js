@@ -8,32 +8,24 @@ app.use(express.static("public"))
 app.get('/', (req, res) => {
   res.render('index',{setup:"What kind of joke you wanna here?, let me know 😁"})
 })
-app.get('/any', (req, res) => {
-  selectedCategory="Any"
-})
-app.get('/programming', async(req, res) => {
-  selectedCategory="Programming"
-})
-app.get('/dark', async(req, res) => {
-  selectedCategory="Dark"
-})
-app.get('/spooky', async(req, res) => {
-  selectedCategory="Spooky"
-})
-app.get('/misc', async(req, res) => {
-  selectedCategory="Misc"
-})
-app.get('/pun', async(req, res) => {
-  selectedCategory="Pun"
-})
-app.get('/christmas', async(req, res) => {
-  selectedCategory="Christmas"
-})
 app.get('/generate', async(req, res) => {
   try {
-    const response= await axios.get(`https://v2.jokeapi.dev/joke/${selectedCategory}`)
-    res.render('index',{setup:JSON.stringify(response.data.setup),delivery:JSON.stringify(response.data.delivery)})
+    let joke=null
+    let setup=null
+    let delivery=null
+    const category=req.query.category
+    const response= await axios.get(`https://v2.jokeapi.dev/joke/${category}`)
+    const type=response.data.type
+    if (response.data.type == 'single') {
+      joke=response.data.joke
+    }else{
+      setup=response.data.setup
+      delivery=response.data.delivery
+    }
+    res.render('index',{joke,setup,delivery})
   } catch (error) {
+    console.log('unable to fetch joke due to this error:',error.message);
+    res.render('index',{joke:'Oops!, i think you have not choosen the category🤔',setup:null,delivery:null})
     
   }
 })
